@@ -1,5 +1,9 @@
-import * as React from 'react'
+import { Outlet } from 'react-router-dom'
 
-export default function App() {
-  return <div>未登录</div>
+export default function BlankLayout() {
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-gray-100">
+      <Outlet />
+    </div>
+  )
 }
