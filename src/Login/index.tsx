@@ -1,8 +1,11 @@
+import { setToken } from '@/utils/auth'
 import { Button, Checkbox, Form, Input, type FormProps } from 'antd'
 import { useNavigate } from 'react-router-dom'
+import { useAuthStore } from '@/store/auth'
 
 export default function App() {
   const navigate = useNavigate()
+  const authStore = useAuthStore()
   type FieldType = {
     username?: string
     password?: string
@@ -11,7 +14,7 @@ export default function App() {
 
   const onFinish: FormProps<FieldType>['onFinish'] = values => {
     console.log('Success:', values)
-    localStorage.setItem('token', '123')
+    authStore.setAuth('123', { id: 1, name: 'Admin', roles: ['admin'] })
     navigate('/', { replace: true })
   }
 
